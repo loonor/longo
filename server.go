@@ -88,4 +88,15 @@ func handlePut(w http.ResponseWriter, r *http.Request) (err error) {
 	body := make([]byte, len)
 	r.Body.Read(body)
 	json.Unmarshal(body, &post)
+
+	err = post.Update()
+	if err != nil {
+		return
+	}
+	w.WriteHeader(200)
+	return
+}
+
+func handleDelete(w http.ResponseWriter, r *http.Request) {
+
 }
